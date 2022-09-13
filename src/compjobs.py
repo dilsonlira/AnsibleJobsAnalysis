@@ -32,9 +32,11 @@ def get_extra_vars(job: int) -> Dict:
     """
     Returs the extra_vars of passed job as a dictionary.
     """
+    extra_vars = {}
     cmd_res = runshell(f'awx-cli job get {job} -f json')
-    job_details = loads(cmd_res)['extra_vars']
-    extra_vars = loads(job_details)
+    if cmd_res:
+        job_details = loads(cmd_res)['extra_vars']
+        extra_vars = loads(job_details)
     return extra_vars
 
 
