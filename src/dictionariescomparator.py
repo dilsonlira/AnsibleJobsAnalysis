@@ -11,8 +11,8 @@ class DictionariesComparator:
     def __init__(self, a: Dict, b: Dict, a_id: int, b_id: int, all_groups: bool = False) -> None:
         self.a = a
         self.b = b
-        self.a_id = a_id
-        self.b_id = b_id
+        self.a_id = a_id if self.a else ''
+        self.b_id = b_id if self.b else ''
         self.all_groups = all_groups
         self.__distribute_keys()
         self.__print('Same key and value', self.same_value)
