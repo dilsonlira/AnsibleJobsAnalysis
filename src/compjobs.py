@@ -45,11 +45,13 @@ def compare_jobs(job_a: int, job_b: int) -> None:
     Performs a comparison between the extra_vars of the jobs passed.
     """
     extra_vars_a = get_extra_vars(job_a)
-    extra_vars_b = get_extra_vars(job_b)
+    extra_vars_b = get_extra_vars(job_b) if job_a != job_b else {}
     DictionariesComparator(extra_vars_a, extra_vars_b, job_a, job_b)
 
 
 def main():
+    if len(argv) == 2:
+        compare_jobs(argv[1], argv[1])
     if len(argv) == 3:
         compare_jobs(argv[1], argv[2])
 
